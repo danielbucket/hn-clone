@@ -1,0 +1,15 @@
+const NS = '@hnReader/app';
+
+export const actionTypes = {
+	SET_THEME: `${NS}/SET_THEME`,
+};
+
+const actions = {
+	setTheme: (payload = {}) => ({
+		type: actionTypes.setTheme,
+		payload
+	}),
+	
+};
+
+export default actions;
