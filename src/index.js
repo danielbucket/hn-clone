@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import configureStore from 'store';
+import configureStore from './store';
 
 import App from 'components/App';
 import setGlobalStyles from 'styles/globals';
@@ -13,8 +13,10 @@ setGlobalStyles();
 const renderApp = () => {
 	const initialState = {};
 	const store = configureStore(initialState);
+	// console.log(store.dispatch)
 	
-	store.dispatch({ type:'@hnReader/@@INIT' });
+	store.dispatch({ type: '@hnReader/@@INIT' });
+	// store.dispatch({ type:"FETCH_STORY_IDS_REQUEST" });
 
 	ReactDOM.render (
 		<Provider store={ store }>
