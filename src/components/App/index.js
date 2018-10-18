@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { hasMoreStoriesSelector } from 'store/story/selectors';
-import actions from 'store/story/actions';
+import { hasMoreStoriesSelector } from '../../store/story/selectors';
+import actions from '../../store/story/actions';
 import App from './App';
 
 // aka CONTAINER

@@ -1,4 +1,4 @@
-import hackerNewsApi from 'services/hackerNewsApi';
+import hackerNewsApi from '../../services/hackerNewsApi';
 
 const NS = '@hnReader/story';
 
@@ -14,7 +14,6 @@ export const actionTypes = {
 const action = (type, payload) => ({ type, payload });
 
 const actions = {
-	conLog: console.log('actions: ', action ),
 	fetchStoryIds: (payload = {}) => {
 		return dispatch => {
 			dispatch(action(actionTypes.FETCH_STORY_IDS_REQUEST, payload));
@@ -30,6 +29,7 @@ const actions = {
 				.catch(err => dispatch(action(actionTypes.FETCH_STORIES_FAILURE, err)));
 		};
 	},
+
 	fetchStories: (payload = {}) => {
 		return dispatch => {
 			const { storyIds, page } = payload;

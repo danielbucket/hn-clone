@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import List from 'components/List';
-import Loader from 'components/Loader';
-import { colorsDark } from 'styles/palette';
+import List from '../List';
+import Loader from '../Loader';
+import { colorsDark } from '../../styles/palette';
 
 import { Wrapper, Title } from './styles';
 
 class App extends Component {
-	componentDidMount() {
+
+	componentWillMount() {
 		this.props.fetchStoriesFirstPage();
 	}
 
@@ -20,30 +21,29 @@ class App extends Component {
 	};
 
 	render() {
-		const { stories, hasMoreStores } = this.props;
+		const { stories, hasMoreStories } = this.props;
 
 		return (
 			<ThemeProvider theme={ colorsDark }>
 				<div>
 					<Wrapper>
 						<Title>Hacker News Reader</Title>
-						<InfiniteScroll
-							dataLength ={ stories.length }
-							next={ this.fetchStories }
-							hasMore={ hasMoreStores }
-							loader={ <Loader /> }
-							style={{
-								height: '100%',
-								overflow: 'visible',
-							}}
-						>
-							<List stories={ stories }/>
+						<InfiniteScroll 	dataLength={ stories.length }
+																		next={ this.fetchStories }
+																 hasMore={ hasMoreStories }
+																	loader={ <Loader /> }
+																	 style={{
+																	 	height:'100%',
+																	  overflow:'visible' }
+																	}>
+
+							<List stories={ stories } />
 						</InfiniteScroll>
 					</Wrapper>
 				</div>
 			</ThemeProvider>
-		)	
-	};
+		)
+	}
 };
 
 export default App;
